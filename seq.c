@@ -12,12 +12,12 @@ int main(int argc, char **argv)
   int *C = (int *)malloc(N * N * sizeof(int));
 
   clock_t start, end;
-
+  srand(time(NULL));
   for (i = 0; i < N; i++)
     for (j = 0; j < N; j++)
     {
-      A[i * N + j] = 3;
-      B[i * N + j] = 3;
+      A[i * N + j] = rand() % 100;
+      B[i * N + j] = rand() % 100;
       C[i * N + j] = 0;
     }
 
