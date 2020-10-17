@@ -7,29 +7,30 @@ int main(int argc, char **argv)
 {
   int i, j, k;
   int N = atoi(argv[1]);
-  int A[N][N];
-  int B[N][N];
-  int C[N][N];
+  int *A = (int *)malloc(N * N * sizeof(int));
+  int *B = (int *)malloc(N * N * sizeof(int));
+  int *C = (int *)malloc(N * N * sizeof(int));
 
   clock_t start, end;
 
   for (i = 0; i < N; i++)
     for (j = 0; j < N; j++)
     {
-      A[i][j] = 3;
-      B[i][j] = 3;
-      C[i][j] = 0;
+      A[i * N + j] = 3;
+      B[i * N + j] = 3;
+      C[i * N + j] = 0;
     }
 
   start = clock();
 
   for (i = 0; i < N; ++i)
   {
+    //printf("%i\n", omp_get_num_threads());
     for (j = 0; j < N; ++j)
     {
       for (k = 0; k < N; ++k)
       {
-        C[i][j] += A[i][k] * B[k][j];
+        C[i * N + j] += A[i * N + k] * B[k * N + j];
       }
     }
   }

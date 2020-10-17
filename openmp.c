@@ -26,7 +26,7 @@ int main(int argc, char **argv)
 
 #pragma omp parallel shared(A, B, C)
   {
-    printf("%i\n", omp_get_num_threads());
+    //printf("%i\n", omp_get_num_threads());
     int i, j, k;
 #pragma omp for
     for (i = 0; i < N; ++i)
@@ -54,6 +54,6 @@ int main(int argc, char **argv)
   }*/
 
   double t = ((double)(end - start)) / (CLOCKS_PER_SEC / 1000);
-  printf("%f\n", t);
+  printf("%f\t", t);
   return 0;
 }
